@@ -15,16 +15,16 @@ public class DatabaseConnection {
 
 	public static void main(String[] args) throws URISyntaxException {
 
-		String url = "jdbc:postgresql://alcor.inf.unibz.it:5433/pneugebauer";
+		String url = "jdbc:postgresql://alcor.inf.unibz.it:5432/pneugebauer";
 		String user = "pneugebauer";
 		String password = "-0ppc0-<";
 		Connection c = null;
 		CSVReader reader = null;
 
-		File authFile = new File(Thread.currentThread().getContextClassLoader()
-				.getResource("data\\auth.tsv").toURI());
-		File publFile = new File(Thread.currentThread().getContextClassLoader()
-				.getResource("data\\publ.tsv").toURI());
+		File authFile = new File(
+				"src/it/unibz/dtm/assignment1/flp/data/auth.tsv");
+		File publFile = new File(
+				"src/it/unibz/dtm/assignment1/flp/data/publ.tsv");
 		File[] fileArray = { authFile, publFile };
 		String[] queryArray = { "Auth(name, pubID) VALUES(?, ?)",
 				"Publ(pubID, type, title, booktitle, year, publisher) VALUES(?, ?, ?, ?, ?, ?)" };
