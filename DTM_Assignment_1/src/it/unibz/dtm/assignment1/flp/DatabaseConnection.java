@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.joda.time.DateTime;
+
 public class DatabaseConnection {
 
 	public static void main(String[] args) throws URISyntaxException {
@@ -30,6 +32,8 @@ public class DatabaseConnection {
 				"publ(pubid, type, title, booktitle, year, publisher) VALUES(?, ?, ?, ?, ?, ?)" };
 		int[] attributeNumber = { 2, 6 };
 
+		DateTime startTime = DateTime.now();
+		DateTime endTime;
 		try {
 			for (int i = 0; i < fileArray.length; i++) {
 				System.out.println("i " + i);
@@ -61,6 +65,7 @@ public class DatabaseConnection {
 		} catch (SQLException | IOException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
+			endTime = DateTime.now();
 			try {
 				if (c != null) {
 					c.close();
@@ -73,5 +78,15 @@ public class DatabaseConnection {
 			}
 		}
 		System.out.println("finished");
+		System.out.println("start_time: "
+				+ startTime.toString("dd.MM.yyyy HH:mm:ss"));
+		System.out.println("end_time: "
+				+ endTime.toString("dd.MM.yyyy HH:mm:ss"));
+		System.out.println("millis duration "
+				+ (endTime.getMillis() - startTime.getMillis()));
+		System.out.println("millis duration "
+				+ (endTime.getMillis() - startTime.getMillis()));
+		System.out.println("seconds duration "
+				+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 	}
 }
