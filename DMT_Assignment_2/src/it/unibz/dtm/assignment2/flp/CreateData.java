@@ -66,6 +66,7 @@ public class CreateData {
 	public static StringReader createEmployees() {
 		String employees = "";
 		for (int i = 0; i < 10000; i++) {
+			System.out.println(i);
 			Random r = new Random();
 			employees += i + 1 + "\t" + generateRandomString(r) + i
 					+ "\tIT-Manager\t" + "IT\t" + r.nextInt(100001) + "\t"
@@ -73,9 +74,10 @@ public class CreateData {
 		}
 
 		for (int i = 10000; i < 100000; i++) {
+			System.out.println(i);
 			Random r = new Random();
 			employees += i + 1 + "\t" + generateRandomString(r) + i
-					+ "\tBWL-Manager\t" + "BWL\t" + r.nextInt(40001) + "\t"
+					+ "\tBWL-Manager\t" + "BWL0\t" + r.nextInt(40001) + "\t"
 					+ r.nextInt(101) + "\n";
 		}
 		return new StringReader(employees);
@@ -84,6 +86,7 @@ public class CreateData {
 	public static StringReader createStudents() {
 		String students = "";
 		for (int i = 0; i < 100000; i++) {
+			System.out.println(i);
 			Random r = new Random();
 			students += i + 1 + "\t" + generateRandomString(r) + i + "\tDMT\t"
 					+ r.nextInt(31) + "\n";
