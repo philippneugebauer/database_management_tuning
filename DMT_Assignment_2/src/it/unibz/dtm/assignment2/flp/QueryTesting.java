@@ -40,12 +40,11 @@ public class QueryTesting {
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
 			startTime = DateTime.now();
-			s.executeUpdate("SELECT AVG(salary) as avsalary, employee.dept INTO temp FROM employee, techdept WHERE employee.dept = techdept.dept GROUP BY employee.dept");
+			s.executeUpdate("SELECT AVG(salary) as avsalary, employee.dept INTO TEMPORARY TABLE temp FROM employee, techdept WHERE employee.dept = techdept.dept GROUP BY employee.dept");
 			s.executeQuery("SELECT ssnum FROM employee, temp WHERE salary = avsalary AND employee.dept = temp.dept");
 			endTime = DateTime.now();
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
-			s.executeUpdate("DROP Table temp");
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
