@@ -28,7 +28,6 @@ public class QueryTesting {
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
 			// TODO: check, ob wirklich statement tuning
-			s = c.createStatement();
 			startTime = DateTime.now();
 			s.executeQuery("SELECT AVG(salary) FROM Employee, Techdept WHERE Employee.dept = Techdept.dept");
 			endTime = DateTime.now();
@@ -36,7 +35,6 @@ public class QueryTesting {
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
 			// FIXME: dauert viel zu lang oO
-			// s = c.createStatement();
 			// startTime = DateTime.now();
 			// results = s
 			// .executeQuery("SELECT ssnum FROM Employee e1, Techdept WHERE salary = (SELECT AVG(e2.salary) FROM Employee e2, Techdept WHERE e2.dept = e1.dept AND e2.dept = Techdept.dept)");
@@ -44,14 +42,12 @@ public class QueryTesting {
 			// System.out.println("seconds duration "
 			// + (endTime.getMillis() - startTime.getMillis()) / 1000);
 
-			s = c.createStatement();
 			startTime = DateTime.now();
 			s.executeUpdate("SELECT AVG(salary) as avsalary, Employee.dept INTO Temp FROM Employee, Techdept WHERE Employee.dept = Techdept.dept GROUP BY Employee.dept");
 			s.executeQuery("SELECT ssnum FROM Employee, Temp WHERE salary = avsalary AND Employee.dept = Temp.dept");
 			endTime = DateTime.now();
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
-			s = c.createStatement();
 			s.executeUpdate("DROP Table temp");
 
 		} catch (SQLException ex) {
