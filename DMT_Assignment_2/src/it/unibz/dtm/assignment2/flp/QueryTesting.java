@@ -34,7 +34,7 @@ public class QueryTesting {
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
 			startTime = DateTime.now();
-			s.executeQuery("SELECT ssnum FROM employee e1, techdept WHERE salary = (SELECT AVG(e2.salary) FROM employee e2, techdept WHERE e2.dept = e1.dept AND e2.dept = techdept.dept)");
+			s.executeQuery("SELECT ssnum FROM employee e1 WHERE salary = (SELECT AVG(e2.salary) FROM employee e2, techdept WHERE e2.dept = e1.dept AND e2.dept = techdept.dept)");
 			endTime = DateTime.now();
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
