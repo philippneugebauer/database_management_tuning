@@ -27,24 +27,21 @@ public class QueryTesting {
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
-			// TODO: check, ob wirklich statement tuning
 			startTime = DateTime.now();
 			s.executeQuery("SELECT AVG(salary) FROM Employee, Techdept WHERE Employee.dept = Techdept.dept");
 			endTime = DateTime.now();
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
-			// FIXME: dauert viel zu lang oO
-			// startTime = DateTime.now();
-			// results = s
-			// .executeQuery("SELECT ssnum FROM Employee e1, Techdept WHERE salary = (SELECT AVG(e2.salary) FROM Employee e2, Techdept WHERE e2.dept = e1.dept AND e2.dept = Techdept.dept)");
-			// endTime = DateTime.now();
-			// System.out.println("seconds duration "
-			// + (endTime.getMillis() - startTime.getMillis()) / 1000);
+			startTime = DateTime.now();
+			s.executeQuery("SELECT ssnum FROM employee e1, techdept WHERE salary = (SELECT AVG(e2.salary) FROM employee e2, techdept WHERE e2.dept = e1.dept AND e2.dept = techdept.dept)");
+			endTime = DateTime.now();
+			System.out.println("seconds duration "
+					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
 
 			startTime = DateTime.now();
-			s.executeUpdate("SELECT AVG(salary) as avsalary, Employee.dept INTO Temp FROM Employee, Techdept WHERE Employee.dept = Techdept.dept GROUP BY Employee.dept");
-			s.executeQuery("SELECT ssnum FROM Employee, Temp WHERE salary = avsalary AND Employee.dept = Temp.dept");
+			s.executeUpdate("SELECT AVG(salary) as avsalary, employee.dept INTO temp FROM employee, techdept WHERE employee.dept = techdept.dept GROUP BY employee.dept");
+			s.executeQuery("SELECT ssnum FROM employee, temp WHERE salary = avsalary AND employee.dept = temp.dept");
 			endTime = DateTime.now();
 			System.out.println("seconds duration "
 					+ (endTime.getMillis() - startTime.getMillis()) / 1000);
