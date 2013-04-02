@@ -57,9 +57,6 @@ public class CreateData {
 
 	public static StringReader createTechdepts() {
 		String techdepts = "IT\tIT-Manager\tKeller\n";
-		for (int i = 0; i < 9; i++) {
-			techdepts += "BWL" + i + "\tBWL-Manager" + i + "\tStrand\n";
-		}
 		return new StringReader(techdepts);
 	}
 
