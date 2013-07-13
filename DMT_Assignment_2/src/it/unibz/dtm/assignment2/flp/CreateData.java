@@ -61,34 +61,34 @@ public class CreateData {
 	}
 
 	public static StringReader createEmployees() {
-		String employees = "";
+		StringBuffer employees = new StringBuffer();
 		for (int i = 0; i < 10000; i++) {
 			System.out.println(i);
 			Random r = new Random();
-			employees += i + 1 + "\t" + generateRandomString(r) + i
+			employees.append(i + 1 + "\t" + generateRandomString(r) + i
 					+ "\tIT-Manager\t" + "IT\t" + r.nextInt(100001) + "\t"
-					+ r.nextInt(31) + "\n";
+					+ r.nextInt(31) + "\n");
 		}
 
 		for (int i = 10000; i < 100000; i++) {
 			System.out.println(i);
 			Random r = new Random();
-			employees += i + 1 + "\t" + generateRandomString(r) + i
+			employees.append(i + 1 + "\t" + generateRandomString(r) + i
 					+ "\tBWL-Manager\t" + "BWL0\t" + r.nextInt(40001) + "\t"
-					+ r.nextInt(101) + "\n";
+					+ r.nextInt(101) + "\n");
 		}
-		return new StringReader(employees);
+		return new StringReader(employees.toString());
 	}
 
 	public static StringReader createStudents() {
-		String students = "";
+		StringBuffer students = new StringBuffer();
 		for (int i = 0; i < 100000; i++) {
 			System.out.println(i);
 			Random r = new Random();
-			students += i + 1 + "\t" + generateRandomString(r) + i + "\tDMT\t"
-					+ r.nextInt(31) + "\n";
+			students.append(i + 1 + "\t" + generateRandomString(r) + i
+					+ "\tDMT\t" + r.nextInt(31) + "\n");
 		}
-		return new StringReader(students);
+		return new StringReader(students.toString());
 	}
 
 	private static String generateRandomString(Random random) {
