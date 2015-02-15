@@ -11,4 +11,6 @@ DTM_Assignment_1/src/it/unibz/dtm/assignment1/flp/data/*
 */.idea/*
 */.classpath
 */.project
+*/.settings/*
+.gradle/*
 
